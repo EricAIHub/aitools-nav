@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /data/
+
+Sitemap: https://ericaihub.github.io/aitools-nav/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
