@@ -1,1323 +1,259 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>AiTool.so - 发现最好的 AI 工具 | 100+ AI 工具导航�?/title>
-    <meta name="description" content="AiTool.so 收录 100+ 最好用的人工智能工具，覆盖 AI 对话、绘画、视频、编程、写作等 10 大分类。每日更新，帮你找到最适合�?AI 利器�?>
-    <meta name="keywords" content="AI工具,人工智能,ChatGPT,Midjourney,AI导航,工具推荐,AI工具�?最好的AI工具,AI工具大全,2026">
-    <meta name="author" content="AiTool.so">`n    <meta name="theme-color" content="#0F0F1A">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ericaihub.github.io/aitools-nav/">`n
-    <!-- Performance: Resource Hints -->
-    <link rel="dns-prefetch" href="https://ericaihub.github.io">
-    <link rel="preconnect" href="https://ericaihub.github.io" crossorigin>
-    <link rel="preload" href="./data/tools.json" as="fetch" crossorigin>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ericaihub.github.io/aitools-nav/">
-    <meta property="og:title" content="AiTool.so - 发现最好的 AI 工具 | 100+ AI 工具导航�?>
-    <meta property="og:description" content="收录 100+ 最好用的人工智能工具，覆盖 AI 对话、绘画、视频、编程、写作等 10 大分类。每日更新�?>
-    <meta property="og:image" content="https://ericaihub.github.io/aitools-nav/preview.png">
-    <meta property="og:site_name" content="AiTool.so">
-    <meta property="og:locale" content="zh_CN">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://ericaihub.github.io/aitools-nav/">
-    <meta name="twitter:title" content="AiTool.so - 发现最好的 AI 工具">
-    <meta name="twitter:description" content="收录 100+ 最好用的人工智能工具，覆盖 AI 对话、绘画、视频、编程、写作等 10 大分类�?>
-    <meta name="twitter:image" content="https://ericaihub.github.io/aitools-nav/preview.png">
-    
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "AiTool.so",
-      "alternateName": "AI 工具导航�?,
-      "url": "https://ericaihub.github.io/aitools-nav/",
-      "description": "发现最好用的人工智能工具，覆盖 AI 对话、绘画、视频、编程、写作等 10 大分类�?,
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://ericaihub.github.io/aitools-nav/?q={search_term_string}",\        "query-input": "required name=search_term_string"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "AiTool.so",
-        "url": "https://ericaihub.github.io/aitools-nav/"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "最�?AI 工具推荐",
-      "description": "精�?100+ 人工智能工具导航",
-      "numberOfItems": 52,
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "ChatGPT", "url": "https://chat.openai.com"},
-        {"@type": "ListItem", "position": 2, "name": "Claude", "url": "https://claude.ai"},
-        {"@type": "ListItem", "position": 3, "name": "Midjourney", "url": "https://midjourney.com"},
-        {"@type": "ListItem", "position": 4, "name": "Sora", "url": "https://sora.com"},
-        {"@type": "ListItem", "position": 5, "name": "Cursor", "url": "https://cursor.sh"},
-        {"@type": "ListItem", "position": 6, "name": "Suno", "url": "https://suno.com"},
-        {"@type": "ListItem", "position": 7, "name": "Kimi", "url": "https://kimi.moonshot.cn"},
-        {"@type": "ListItem", "position": 8, "name": "Perplexity", "url": "https://perplexity.ai"},
-        {"@type": "ListItem", "position": 9, "name": "v0", "url": "https://v0.dev"},
-        {"@type": "ListItem", "position": 10, "name": "Gamma", "url": "https://gamma.app"}
-      ]
-    }
-    </script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --primary: #6C5CE7;
-            --primary-light: #A29BFE;
-            --secondary: #00CEC9;
-            --bg: #0F0F1A;
-            --card-bg: #1A1A2E;
-            --card-hover: #232342;
-            --text: #E8E8F0;
-            --text-dim: #8888AA;
-            --border: #2A2A45;
-            --accent: #FD79A8;
-            --success: #00B894;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        /* ===== Header ===== */
-        header {
-            background: linear-gradient(135deg, rgba(108,92,231,0.15) 0%, rgba(0,206,201,0.1) 100%);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(20px);
-        }
-        
-        .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-        
-        .logo span { font-size: 14px; -webkit-text-fill-color: var(--text-dim); margin-left: 8px; font-weight: 400; }
-        
-        nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-            margin-left: 28px;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
-        nav a:hover { color: var(--text); }
-        nav a.submit-btn {
-            background: var(--primary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-        nav a.submit-btn:hover { background: var(--primary-light); }
-        
-        /* ===== Hero ===== */
-        .hero {
-            text-align: center;
-            padding: 80px 24px 60px;
-            background: radial-gradient(ellipse at center, rgba(108,92,231,0.08) 0%, transparent 70%);
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff, var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-        
-        /* ===== Search ===== */
-        .search-box {
-            max-width: 640px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 16px 24px 16px 52px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        
-        .search-box input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(108,92,231,0.2);
-        }
-        
-        .search-box::before {
-            content: "🔍";
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-        }
-        
-        /* ===== Stats ===== */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            margin-top: 40px;
-        }
-        
-        .stat { text-align: center; }
-        .stat-num { font-size: 32px; font-weight: 800; color: var(--secondary); }
-        .stat-label { font-size: 14px; color: var(--text-dim); margin-top: 4px; }
-        
-        /* ===== Categories ===== */
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 24px;
-        }
-        
-        .section-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 60px;
-        }
-        
-        .category-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: var(--text);
-        }
-        
-        .category-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 32px rgba(108,92,231,0.2);
-        }
-        
-        .category-card.active {
-            border-color: var(--primary);
-            background: rgba(108,92,231,0.1);
-        }
-        
-        .category-icon { font-size: 36px; margin-bottom: 12px; }
-        .category-name { font-size: 15px; font-weight: 600; }
-        .category-count { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
-        
-        /* ===== Tool Cards ===== */
-        .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 20px;
-        }
-        
-        .tool-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: var(--text);
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 32px rgba(108,92,231,0.15);
-        }
-        
-        .tool-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-        
-        .tool-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-        
-        .tool-name { font-size: 18px; font-weight: 700; }
-        .tool-pricing {
-            font-size: 12px;
-            color: var(--success);
-            background: rgba(0,184,148,0.1);
-            padding: 2px 10px;
-            border-radius: 20px;
-            margin-top: 4px;
-            display: inline-block;
-        }
-        
-        .tool-desc {
-            font-size: 14px;
-            color: var(--text-dim);
-            margin-bottom: 16px;
-            flex: 1;
-            line-height: 1.7;
-        }
-        
-        .tool-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .tool-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-        
-        .tool-tag {
-            font-size: 12px;
-            color: var(--text-dim);
-            background: rgba(136,136,170,0.1);
-            padding: 4px 10px;
-            border-radius: 6px;
-        }
-        
-        .tool-rating {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #FDCB6E;
-        }
-        
-        .featured-badge {
-            background: linear-gradient(135deg, var(--accent), var(--primary));
-            color: white;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        
-        /* ===== Filter bar ===== */
-        .filter-bar {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
-        .filter-btn {
-            padding: 8px 18px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-dim);
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        
-        .filter-btn:hover { border-color: var(--primary); color: var(--text); }
-        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-        
-        /* ===== Submit Form ===== */
-        .submit-section {
-            background: linear-gradient(135deg, rgba(108,92,231,0.08) 0%, rgba(0,206,201,0.05) 100%);
-            border-radius: 24px;
-            padding: 48px;
-            margin: 60px auto;
-            max-width: 800px;
-            text-align: center;
-        }
-        
-        .submit-section h2 { font-size: 28px; margin-bottom: 12px; }
-        .submit-section p { color: var(--text-dim); margin-bottom: 32px; }
-        
-        .submit-form {
-            display: flex;
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .submit-form input {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 15px;
-            outline: none;
-        }
-        
-        .submit-form button {
-            padding: 14px 28px;
-            border-radius: 12px;
-            border: none;
-            background: var(--primary);
-            color: white;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            white-space: nowrap;
-        }
-        
-        .submit-form button:hover { background: var(--primary-light); }
-        
-        /* ===== Footer ===== */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 40px 24px;
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 14px;
-        }
-        
-        footer a { color: var(--primary-light); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-        
-        /* ===== Responsive ===== */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .stats { gap: 24px; }
-            .tool-grid { grid-template-columns: 1fr; }
-            .category-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-            .header-inner { flex-wrap: wrap; gap: 12px; }
-            nav a { margin-left: 16px; }
-            .submit-form { flex-direction: column; }
-        }
-        
-        /* ===== Animations ===== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .tool-card { animation: fadeInUp 0.4s ease-out; }
-        
-        /* ===== Toast ===== */
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: var(--success);
-            color: white;
-            padding: 14px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-        .toast.show { opacity: 1; transform: translateY(0); }
-        
-        /* ===== No results ===== */
-        .no-results {
-            text-align: center;
-            padding: 60px 24px;
-            color: var(--text-dim);
-        }
-
-        /* ===== Ad Placeholder ===== */
-        .ad-banner {
-            background: var(--card-bg);
-            border: 1px dashed var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 13px;
-            margin: 32px auto;
-            max-width: 728px;
-        }
-        .ad-sidebar {
-            background: var(--card-bg);
-            border: 1px dashed var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 12px;
-            margin: 20px 0;
-        }
-        .no-results .emoji { font-size: 48px; margin-bottom: 16px; }
-        /* ===== Favorite Button ===== */
-        .fav-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s;
-            z-index: 2;
-        }
-        .tool-card:hover .fav-btn { opacity: 1; }
-        .fav-btn.active { opacity: 1; }
-        .fav-btn:hover { transform: scale(1.2); }
-
-        /* ===== Compare Bar ===== */
-        .compare-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--card-bg);
-            border-top: 2px solid var(--primary);
-            padding: 16px 24px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            z-index: 98;
-            backdrop-filter: blur(20px);
-        }
-        .compare-bar.visible { display: flex; }
-        .compare-items { display: flex; gap: 12px; }
-        .compare-item {
-            background: rgba(108,92,231,0.15);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .compare-item .remove { cursor: pointer; opacity: 0.6; }
-        .compare-item .remove:hover { opacity: 1; }
-        .compare-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .compare-btn:hover { background: var(--primary-light); }
-        .compare-clear {
-            background: none;
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            padding: 10px 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        /* ===== Compare Checkbox ===== */
-        .compare-check {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: var(--text-dim);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 2;
-        }
-        .tool-card:hover .compare-check { opacity: 1; }
-        .compare-check input { accent-color: var(--primary); }
-
-        /* ===== Rating Stars ===== */
-        .rating-stars {
-            display: flex;
-            gap: 4px;
-        }
-        .rating-stars .star {
-            cursor: pointer;
-            font-size: 18px;
-            transition: transform 0.2s;
-        }
-        .rating-stars .star:hover { transform: scale(1.3); }
-
-        /* ===== Newsletter ===== */
-        .newsletter-section {
-            background: linear-gradient(135deg, rgba(0,206,201,0.08) 0%, rgba(108,92,231,0.05) 100%);
-            border-radius: 24px;
-            padding: 48px;
-            margin: 0 auto 60px;
-            max-width: 800px;
-            text-align: center;
-        }
-        .newsletter-section h2 { font-size: 28px; margin-bottom: 12px; }
-        .newsletter-section p { color: var(--text-dim); margin-bottom: 32px; }
-        .newsletter-form {
-            display: flex;
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .newsletter-form input {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 15px;
-            outline: none;
-        }
-        .newsletter-form button {
-            padding: 14px 28px;
-            border-radius: 12px;
-            border: none;
-            background: var(--secondary);
-            color: white;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        /* ===== History Section ===== */
-        .history-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px 40px;
-        }
-        .history-section h3 {
-            font-size: 18px;
-            margin-bottom: 16px;
-            color: var(--text-dim);
-        }
-        .history-list {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding-bottom: 8px;
-        }
-        .history-item {
-            flex-shrink: 0;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px 18px;
-            text-decoration: none;
-            color: var(--text);
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        .history-item:hover {
-            border-color: var(--primary);
-        }
-        
-        /* ===== Light Mode ===== */
-        body.light {
-            --bg: #F5F5FA;
-            --card-bg: #FFFFFF;
-            --card-hover: #F0F0F8;
-            --text: #1A1A2E;
-            --text-dim: #666688;
-            --border: #DDDDE8;
-        }
-        body.light header {
-            background: linear-gradient(135deg, rgba(108,92,231,0.08) 0%, rgba(0,206,201,0.05) 100%);
-        }
-        body.light .search-box input {
-            background: #fff;
-            border-color: var(--border);
-        }
-        body.light .category-card,
-        body.light .tool-card {
-            background: #fff;
-            border-color: var(--border);
-        }
-        
-        /* ===== Hamburger Menu ===== */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 4px;
-            z-index: 200;
-        }
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text);
-            transition: all 0.3s;
-            border-radius: 2px;
-        }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        
-        nav.mobile-open {
-            display: flex !important;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            z-index: 150;
-        }
-        nav.mobile-open a {
-            font-size: 24px;
-            margin-left: 0;
-        }
-        
-        /* ===== Back to Top ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s;
-            z-index: 99;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 16px rgba(108,92,231,0.3);
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-        }
-        
-        /* ===== Theme Toggle ===== */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 6px 10px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.2s;
-            color: var(--text);
-        }
-        .theme-toggle:hover {
-            border-color: var(--primary);
-        }
-        
-        /* ===== Search Highlight ===== */
-        .highlight {
-            background: rgba(253,121,168,0.25);
-            color: var(--accent);
-            padding: 0 2px;
-            border-radius: 3px;
-        }
-        
-        /* ===== Enhanced Hover ===== */
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(108,92,231,0.1), rgba(0,206,201,0.1));
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        .tool-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .tool-card:hover::before {
-            opacity: 1;
-        }
-        
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            nav { display: none; }
-            .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AiTool.so - 发现最好的 AI 工具</title>
+<meta name="description" content="发现最好用的人工智能工具。精选 AI 对话、绘画、视频、编程、写作等 10 大分类工具导航。">
+<meta name="keywords" content="AI工具,人工智能,ChatGPT,Midjourney,AI导航,工具推荐">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#129302;</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:#6C5CE7;--pl:#A29BFE;--s:#00CEC9;--bg:#0F0F1A;--cb:#1A1A2E;--ch:#232342;--t:#E8E8F0;--td:#8888AA;--bd:#2A2A45;--ac:#FD79A8;--ok:#00B894}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t);line-height:1.6;min-height:100vh}
+header{background:linear-gradient(135deg,rgba(108,92,231,.15),rgba(0,206,201,.1));border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
+.hi{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--pl),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.logo span{font-size:14px;-webkit-text-fill-color:var(--td);margin-left:8px;font-weight:400}
+nav a{color:var(--td);text-decoration:none;margin-left:28px;font-size:15px;transition:color .2s}
+nav a:hover{color:var(--t)}
+.hero{text-align:center;padding:80px 24px 60px;background:radial-gradient(ellipse at center,rgba(108,92,231,.08),transparent 70%)}
+.hero h1{font-size:48px;font-weight:800;margin-bottom:16px;background:linear-gradient(135deg,#fff,var(--pl));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:18px;color:var(--td);max-width:600px;margin:0 auto 40px}
+.sb{max-width:640px;margin:0 auto;position:relative}
+.sb input{width:100%;padding:16px 24px 16px 52px;border-radius:16px;border:1px solid var(--bd);background:var(--cb);color:var(--t);font-size:16px;outline:none;transition:border-color .3s,box-shadow .3s}
+.sb input:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(108,92,231,.2)}
+.sb::before{content:"&#128269;";position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:18px}
+.stats{display:flex;justify-content:center;gap:48px;margin-top:40px}
+.stat{text-align:center}
+.sn{font-size:32px;font-weight:800;color:var(--s)}
+.sl{font-size:14px;color:var(--td);margin-top:4px}
+.sec{max-width:1200px;margin:0 auto;padding:60px 24px}
+.st{font-size:28px;font-weight:700;margin-bottom:32px;display:flex;align-items:center;gap:12px}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:60px}
+.cc{background:var(--cb);border:1px solid var(--bd);border-radius:16px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--t)}
+.cc:hover{transform:translateY(-4px);border-color:var(--p);box-shadow:0 8px 32px rgba(108,92,231,.2)}
+.cc.active{border-color:var(--p);background:rgba(108,92,231,.1)}
+.ci{font-size:36px;margin-bottom:12px}
+.cn{font-size:15px;font-weight:600}
+.ct{font-size:12px;color:var(--td);margin-top:4px}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.tc{background:var(--cb);border:1px solid var(--bd);border-radius:16px;padding:24px;transition:all .3s;display:flex;flex-direction:column;text-decoration:none;color:var(--t)}
+.tc:hover{transform:translateY(-4px);border-color:var(--p);box-shadow:0 8px 32px rgba(108,92,231,.15)}
+.th{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ticon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--s));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.tn{font-size:18px;font-weight:700}
+.tp{font-size:12px;color:var(--ok);background:rgba(0,184,148,.1);padding:2px 10px;border-radius:20px;margin-top:4px;display:inline-block}
+.td{font-size:14px;color:var(--td);margin-bottom:16px;flex:1;line-height:1.7}
+.tf{display:flex;align-items:center;justify-content:space-between}
+.ttags{display:flex;gap:6px;flex-wrap:wrap}
+.tt{font-size:12px;color:var(--td);background:rgba(136,136,170,.1);padding:4px 10px;border-radius:6px}
+.tr{display:flex;align-items:center;gap:4px;font-size:14px;font-weight:600;color:#FDCB6E}
+.fb{background:linear-gradient(135deg,var(--ac),var(--p));color:white;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;margin-left:8px}
+.fbar{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;align-items:center}
+.fbtn{padding:8px 18px;border-radius:10px;border:1px solid var(--bd);background:transparent;color:var(--td);cursor:pointer;font-size:14px;transition:all .2s}
+.fbtn:hover{border-color:var(--p);color:var(--t)}
+.fbtn.active{background:var(--p);color:white;border-color:var(--p)}
+.ss{background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(0,206,201,.05));border-radius:24px;padding:48px;margin:60px auto;max-width:800px;text-align:center}
+.ss h2{font-size:28px;margin-bottom:12px}
+.ss p{color:var(--td);margin-bottom:32px}
+.sf{display:flex;gap:12px;max-width:500px;margin:0 auto}
+.sf input{flex:1;padding:14px 20px;border-radius:12px;border:1px solid var(--bd);background:var(--cb);color:var(--t);font-size:15px;outline:none}
+.sf button{padding:14px 28px;border-radius:12px;border:none;background:var(--p);color:white;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
+.sf button:hover{background:var(--pl)}
+footer{border-top:1px solid var(--bd);padding:40px 24px;text-align:center;color:var(--td);font-size:14px}
+footer a{color:var(--pl);text-decoration:none}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--ok);color:white;padding:14px 24px;border-radius:12px;font-weight:600;opacity:0;transform:translateY(20px);transition:all .3s;z-index:1000}
+.toast.show{opacity:1;transform:translateY(0)}
+.nr{text-align:center;padding:60px 24px;color:var(--td)}
+.hl{background:rgba(253,121,168,.25);color:var(--ac);padding:0 2px;border-radius:3px}
+.btt{position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:var(--p);color:white;border:none;font-size:20px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;z-index:99;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(108,92,231,.3)}
+.btt.vis{opacity:1;transform:translateY(0)}
+.btt:hover{background:var(--pl);transform:translateY(-2px)}
+.tt-toggle{background:none;border:1px solid var(--bd);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:18px;transition:all .2s;color:var(--t)}
+.tt-toggle:hover{border-color:var(--p)}
+body.light{--bg:#F5F5FA;--cb:#FFFFFF;--ch:#F0F0F8;--t:#1A1A2E;--td:#666688;--bd:#DDDDE8}
+body.light header{background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(0,206,201,.05))}
+body.light .sb input,body.light .cc,body.light .tc{background:#fff;border-color:var(--bd)}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.tc{animation:fadeInUp .4s ease-out}
+@media(max-width:768px){.hero h1{font-size:32px}.stats{gap:24px}.tg{grid-template-columns:1fr}.cg{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}.hi{flex-wrap:wrap;gap:12px}nav a{margin-left:16px}.sf{flex-direction:column}}
+</style>
 </head>
 <body>
-
 <header>
-    <div class="header-inner">
-        <a href="/" class="logo">AiTool.so <span>AI 工具导航</span></a>
-        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
-            <span></span><span></span><span></span>
-        </div>
-        <nav id="mainNav">
-            <a href="#categories">分类</a>
-            <a href="#tools">工具</a>
-            <a href="#submit">提交</a>
-            <a href="#about">关于</a>`n            <a href="pricing.html">收录方案</a>
-            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换主题">🌙</button>
-        </nav>
-    </div>
+<div class="hi">
+<a href="/" class="logo">AiTool.so <span>AI 工具导航</span></a>
+<nav>
+<a href="#categories">分类</a>
+<a href="#tools">工具</a>
+<a href="#submit">提交</a>
+<a href="#about">关于</a>
+<button class="tt-toggle" id="themeToggle" onclick="toggleTheme()">&#127769;</button>
+</nav>
+</div>
 </header>
 
 <section class="hero">
-    <h1>发现最好的 AI 工具</h1>
-    <p>精�?100+ 人工智能工具，覆盖对话、绘画、视频、编程、写作等 10 大分类，帮你找到最适合�?AI 利器</p>
-    
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="搜索 AI 工具... 例如：ChatGPT、绘画、编�?>
-    </div>
-    
-    <div class="stats">
-        <div class="stat">
-            <div class="stat-num" id="toolCount">20</div>
-            <div class="stat-label">AI 工具</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">10</div>
-            <div class="stat-label">分类</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">每日</div>
-            <div class="stat-label">持续更新</div>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="categories">
-    <div class="section-title">📂 工具分类</div>
-    <div class="category-grid" id="categoryGrid"></div>
-</section>
-
-<section class="section" id="tools">
-    <div class="section-title">🔥 热门工具</div>
-    <div class="filter-bar" id="filterBar">
-        <button class="filter-btn active" data-filter="all">全部</button>
-        <button class="filter-btn" data-filter="featured">�?精�?/button>
-        <button class="filter-btn" data-filter="free">🆓 免费</button>
-        <button class="filter-btn" data-filter="popular">🔥 最�?/button>
-    </div>
-    <div class="tool-grid" id="toolGrid"></div>
-    <div class="no-results" id="noResults" style="display:none;">
-        <div class="emoji">🔍</div>
-        <p>没有找到匹配的工具，试试其他关键词？</p>
-    </div>
-</section>
-
-
-<!-- Ad Placeholder - Top -->
-<div class="ad-banner" id="adTop">
-    <div>广告位招租 · 联系 hello@aitool.so</div>
+<h1>发现最好的 AI 工具</h1>
+<p>精选 AI 对话、绘画、视频、编程、写作等 10 大分类工具导航，帮你找到最适合的 AI 利器</p>
+<div class="sb">
+<input type="text" id="searchInput" placeholder="搜索 AI 工具...">
 </div>
-<section class="section" id="latest">
-    <div class="section-title">🆕 最新工具</div>
-    <div class="tool-grid" id="latestGrid"></div>
+<div class="stats">
+<div class="stat"><div class="sn" id="toolCount">0</div><div class="sl">AI 工具</div></div>
+<div class="stat"><div class="sn">10</div><div class="sl">分类</div></div>
+<div class="stat"><div class="sn">每日</div><div class="sl">持续更新</div></div>
+</div>
 </section>
 
-<section class="submit-section" id="submit">
-    <h2>🚀 提交你的 AI 工具</h2>
-    <p>发现了好用的 AI 工具？提交给我们，审核通过后免费收�?/p>
-    <div class="submit-form">
-        <input type="email" id="submitEmail" placeholder="你的邮箱">
-        <input type="url" id="submitUrl" placeholder="工具网址 (https://...)">
-        <button onclick="submitTool()">提交工具</button>
-    </div>
+<section class="sec" id="categories">
+<div class="st">&#128194; 工具分类</div>
+<div class="cg" id="categoryGrid"></div>
 </section>
 
-
-<section class="newsletter-section" id="newsletter">
-    <h2>📬 订阅 AI 工具周报</h2>
-    <p>每周精选最新 AI 工具和使用技巧，直接送到你的邮箱</p>
-    <div class="newsletter-form">
-        <input type="email" id="newsletterEmail" placeholder="输入你的邮箱">
-        <button onclick="subscribeNewsletter()">订阅</button>
-    </div>
+<section class="sec" id="tools">
+<div class="st">&#128293; 热门工具</div>
+<div class="fbar" id="filterBar">
+<button class="fbtn active" data-filter="all">全部</button>
+<button class="fbtn" data-filter="featured">&#11088; 精选</button>
+<button class="fbtn" data-filter="free">&#127873; 免费</button>
+<button class="fbtn" data-filter="popular">&#128293; 最热</button>
+</div>
+<div class="tg" id="toolGrid"></div>
+<div class="nr" id="noResults" style="display:none">
+<div style="font-size:48px;margin-bottom:16px">&#128269;</div>
+<p>没有找到匹配的工具，试试其他关键词？</p>
+</div>
 </section>
+
+<section class="ss" id="submit">
+<h2>&#128640; 提交你的 AI 工具</h2>
+<p>发现了好用的 AI 工具？提交给我们，审核通过后免费收录</p>
+<div class="sf">
+<input type="email" id="submitEmail" placeholder="你的邮箱">
+<input type="url" id="submitUrl" placeholder="工具网址 (https://...)">
+<button onclick="submitTool()">提交工具</button>
+</div>
+</section>
+
 <footer id="about">
-    <p style="margin-bottom:12px;">
-        <a href="/">AiTool.so</a> �?发现最好的 AI 工具
-    </p>
-    <p>© 2026 AiTool.so · 持续收录最优质�?AI 工具</p>
-    <p style="margin-top:12px;font-size:12px;">
-        联系我们：hello@aitool.so · 
-        <a href="https://twitter.com/aitoolso" target="_blank">Twitter</a>
-    </p>
+<p style="margin-bottom:12px"><a href="/">AiTool.so</a> &#183; 发现最好的 AI 工具</p>
+<p>&#169; 2026 AiTool.so &#183; 持续收录最优质的 AI 工具</p>
+<p style="margin-top:12px;font-size:12px">联系我们：hello@aitool.so &#183; <a href="https://twitter.com/aitoolso" target="_blank">Twitter</a></p>
 </footer>
 
 <div class="toast" id="toast"></div>
-
-<div class="compare-bar" id="compareBar">
-    <div class="compare-items" id="compareItems"></div>
-    <button class="compare-btn" onclick="openCompare()">对比</button>
-    <button class="compare-clear" onclick="clearCompare()">清空</button>
-</div>
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="btt" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
 <script>
-// ===== Data =====
-let toolsData = [];
-let categoriesData = [];
-let currentCategory = 'all';
-let currentFilter = 'all';
+var toolsData=[],categoriesData=[],currentCategory='all',currentFilter='all';
 
-// ===== Init =====
-async function init() {
-    try {
-        const resp = await fetch('./data/tools.json');
-        const data = await resp.json();
-        toolsData = data.tools;
-        categoriesData = data.categories;
-        renderCategories();
-        renderTools();
-        renderLatest();
-        setupSearch();
-        setupFilters();
-        updateStats();
-    } catch (e) {
-        console.error('Failed to load tools data:', e);
-    }
+function init(){
+fetch('./data/tools.json').then(function(r){return r.json()}).then(function(data){
+toolsData=data.tools;categoriesData=data.categories;
+renderCategories();renderTools();setupSearch();setupFilters();
+document.getElementById('toolCount').textContent=toolsData.length;
+}).catch(function(e){console.error('Load failed:',e)});
 }
 
-// ===== Render Categories =====
-function renderCategories() {
-    const grid = document.getElementById('categoryGrid');
-    grid.innerHTML = categoriesData.map(cat => {
-        const count = toolsData.filter(t => t.category === cat.id).length;
-        return `
-            <a class="category-card ${currentCategory === cat.id ? 'active' : ''}" 
-               onclick="filterByCategory('${cat.id}')" href="#tools">
-                <div class="category-icon">${cat.icon}</div>
-                <div class="category-name">${cat.name}</div>
-                <div class="category-count">${count} 个工�?/div>
-            </a>
-        `;
-    }).join('');
+function renderCategories(){
+var g=document.getElementById('categoryGrid');
+g.innerHTML=categoriesData.map(function(cat){
+var c=toolsData.filter(function(t){return t.category===cat.id}).length;
+return '<a class="cc'+(currentCategory===cat.id?' active':'')+'" onclick="filterByCategory(\''+cat.id+'\')" href="#tools">'+
+'<div class="ci">'+cat.icon+'</div>'+
+'<div class="cn">'+cat.name+'</div>'+
+'<div class="ct">'+c+' 个工具</div></a>';
+}).join('');
 }
 
-// ===== Render Tools =====
-function renderTools() {
-    const grid = document.getElementById('toolGrid');
-    const noResults = document.getElementById('noResults');
-    
-    let filtered = [...toolsData];
-    
-    // Category filter
-    if (currentCategory !== 'all') {
-        filtered = filtered.filter(t => t.category === currentCategory);
-    }
-    
-    // Search filter
-    const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    if (query) {
-        filtered = filtered.filter(t => 
-            t.name.toLowerCase().includes(query) ||
-            t.nameZh.includes(query) ||
-            t.description.includes(query) ||
-            t.tags.some(tag => tag.includes(query))
-        );
-    }
-    
-    // Filter buttons
-    if (currentFilter === 'featured') {
-        filtered = filtered.filter(t => t.featured);
-    } else if (currentFilter === 'free') {
-        filtered = filtered.filter(t => 
-            t.pricing.includes('免费') || t.pricing.includes('开�?)
-        );
-    } else if (currentFilter === 'popular') {
-        filtered = filtered.sort((a, b) => b.rating - a.rating);
-    } else if (currentFilter === 'favorites') {
-        const favs = getFavorites();
-        filtered = filtered.filter(t => favs.includes(t.id));
-    }
-    
-    if (filtered.length === 0) {
-        grid.innerHTML = '';
-        noResults.style.display = 'block';
-        return;
-    }
-    
-    noResults.style.display = 'none';
-    
-    grid.innerHTML = filtered.map((tool, i) => {
-        const cat = categoriesData.find(c => c.id === tool.category);
-        const query = document.getElementById("searchInput").value.toLowerCase().trim();
-        const displayName = highlightText(tool.nameZh, query);
-        const displayDesc = highlightText(tool.description, query);
-        return `
-            <a href="tool.html?id=${tool.id}" class="tool-card" 
-               style="animation-delay: ${i * 0.05}s">
-                <div class="tool-header">
-                    <div class="tool-icon">${cat ? cat.icon : '🤖'}</div>
-                    <div>
-                        <div class="tool-name">
-                            ${displayName}
-                            ${tool.featured ? '<span class="featured-badge">精�?/span>' : ''}
-                        </div>
-                        <div class="tool-pricing">${tool.pricing}</div>
-                    </div>
-                </div>
-                <button class="fav-btn ${isFavorite(tool.id) ? 'active' : '' }" onclick="toggleFavorite(${tool.id}, event)">${isFavorite(tool.id) ? '❤️' : '🤍'}</button>
-                <div class="tool-desc">${displayDesc}</div>
-                <div class="tool-footer">
-                    <div class="tool-tags">
-                        ${tool.tags.slice(0, 3).map(t => `<span class="tool-tag">${t}</span>`).join('')}
-                    </div>
-                    <div class="tool-rating">�?${tool.rating}</div>
-                </div>
-                <label class="compare-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" ${compareList.includes(tool.id) ? 'checked' : '' } onchange="toggleCompare(${tool.id}, event)"> 对比
-                </label>
-            </a>
-        `;
-    }).join('');
-}
-
-// ===== Render Latest Tools =====
-function renderLatest() {
-    const grid = document.getElementById('latestGrid');
-    if (!grid) return;
-    // Show last 6 tools as "newest"
-    const latest = [...toolsData].slice(-6).reverse();
-    grid.innerHTML = latest.map((tool, i) => {
-        const cat = categoriesData.find(c => c.id === tool.category);
-        const query = "";
-        const displayName = tool.nameZh;
-        const displayDesc = tool.description;
-        return `
-            <a href="tool.html?id=${tool.id}" class="tool-card" 
-               style="animation-delay: ${i * 0.05}s">
-                <div class="tool-header">
-                    <div class="tool-icon">${cat ? cat.icon : '🤖'}</div>
-                    <div>
-                        <div class="tool-name">
-                            ${displayName}
-                            ${tool.featured ? '<span class="featured-badge">精选</span>' : ''}
-                        </div>
-                        <div class="tool-pricing">${tool.pricing}</div>
-                    </div>
-                </div>
-                <button class="fav-btn ${isFavorite(tool.id) ? 'active' : ''}" onclick="toggleFavorite(${tool.id}, event)">${isFavorite(tool.id) ? '❤️' : '🤍'}</button>
-                <div class="tool-desc">${displayDesc}</div>
-                <div class="tool-footer">
-                    <div class="tool-tags">
-                        ${tool.tags.slice(0, 3).map(t => `<span class="tool-tag">${t}</span>`).join('')}
-                    </div>
-                    <div class="tool-rating">⭐ ${tool.rating}</div>
-                </div>
-            </a>
-        `;
-    }).join('');
-}
-
-// ===== Filter by Category =====
-function filterByCategory(catId) {
-    if (currentCategory === catId) {
-        currentCategory = 'all';
-    } else {
-        currentCategory = catId;
-    }
-    renderCategories();
-    renderTools();
-    
-    // Update section title
-    const title = document.querySelector('#tools .section-title');
-    if (currentCategory === 'all') {
-        title.textContent = '🔥 热门工具';
-    } else {
-        const cat = categoriesData.find(c => c.id === currentCategory);
-        title.textContent = `${cat.icon} ${cat.name}`;
-    }
-}
-
-// ===== Search =====
-function setupSearch() {
-    const input = document.getElementById('searchInput');
-    let debounce;
-    input.addEventListener('input', () => {
-        clearTimeout(debounce);
-        debounce = setTimeout(() => {
-            currentCategory = 'all';
-            renderCategories();
-            renderTools();
-        }, 200);
-    });
-}
-
-// ===== Filter Buttons =====
-function setupFilters() {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentFilter = btn.dataset.filter;
-            renderTools();
-        });
-    });
-}
-
-// ===== Update Stats =====
-function updateStats() {
-    document.getElementById('toolCount').textContent = toolsData.length;
-}
-
-// ===== Submit Tool =====
-function submitTool() {
-    const email = document.getElementById('submitEmail').value.trim();
-    const url = document.getElementById('submitUrl').value.trim();
-    
-    if (!email || !url) {
-        showToast('请填写邮箱和工具网址 �?);
-        return;
-    }
-    
-    if (!url.startsWith('http')) {
-        showToast('请输入有效的网址 �?);
-        return;
-    }
-    
-    // In production, this would send to a backend API
-    showToast('提交成功！审核通过后会收录 �?);
-    document.getElementById('submitEmail').value = '';
-    document.getElementById('submitUrl').value = '';
-}
-
-// ===== Toast =====
-function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
-}
-
-
-// ===== Favorites (localStorage) =====
-function getFavorites() {
-    return JSON.parse(localStorage.getItem('favorites') || '[]');
-}
-function toggleFavorite(id, e) {
-    e.preventDefault();
-    e.stopPropagation();
-    let favs = getFavorites();
-    if (favs.includes(id)) {
-        favs = favs.filter(f => f !== id);
-        showToast('已取消收藏');
-    } else {
-        favs.push(id);
-        showToast('已添加收藏 ❤️');
-    }
-    localStorage.setItem('favorites', JSON.stringify(favs));
-    renderTools();
-    renderLatest();
-}
-function isFavorite(id) {
-    return getFavorites().includes(id);
-}
-
-// ===== Compare =====
-let compareList = [];
-function toggleCompare(id, e) {
-    e.stopPropagation();
-    const idx = compareList.indexOf(id);
-    if (idx > -1) {
-        compareList.splice(idx, 1);
-    } else if (compareList.length < 3) {
-        compareList.push(id);
-    } else {
-        showToast('最多对比 3 个工具');
-        return;
-    }
-    updateCompareBar();
-}
-function updateCompareBar() {
-    const bar = document.getElementById('compareBar');
-    const items = document.getElementById('compareItems');
-    if (compareList.length === 0) {
-        bar.classList.remove('visible');
-        return;
-    }
-    bar.classList.add('visible');
-    const names = compareList.map(id => {
-        const tool = toolsData.find(t => t.id === id);
-        return tool ? <div class="compare-item"> <span class="remove" onclick="toggleCompare(, event)">✕</span></div> : '';
-    });
-    items.innerHTML = names.join('');
-}
-function clearCompare() {
-    compareList = [];
-    updateCompareBar();
-    renderTools();
-}
-function openCompare() {
-    if (compareList.length < 2) {
-        showToast('请至少选择 2 个工具');
-        return;
-    }
-    const ids = compareList.join(',');
-    window.open(compare.html?ids=, '_blank');
-}
-
-// ===== Browsing History =====
-function addToHistory(id) {
-    let history = JSON.parse(localStorage.getItem('history') || '[]');
-    history = history.filter(h => h !== id);
-    history.unshift(id);
-    if (history.length > 10) history = history.slice(0, 10);
-    localStorage.setItem('history', JSON.stringify(history));
-}
-function getHistory() {
-    return JSON.parse(localStorage.getItem('history') || '[]');
-}
-
-// ===== Newsletter =====
-function subscribeNewsletter() {
-    const email = document.getElementById('newsletterEmail').value.trim();
-    if (!email || !email.includes('@')) {
-        showToast('请输入有效的邮箱地址');
-        return;
-    }
-    localStorage.setItem('newsletter', email);
-    showToast('订阅成功！每周会收到 AI 工具推荐 📬');
-    document.getElementById('newsletterEmail').value = '';
-}
-
-// ===== User Rating =====
-function rateTool(id, rating) {
-    const ratings = JSON.parse(localStorage.getItem('ratings') || '{}');
-    ratings[id] = rating;
-    localStorage.setItem('ratings', JSON.stringify(ratings));
-    showToast(已评分  ⭐);
-}
-// ===== Mobile Menu =====
-function toggleMobileMenu() {
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('mainNav');
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('mobile-open');
-}
-
-// Close mobile menu on link click
-document.addEventListener('click', (e) => {
-    if (e.target.closest('#mainNav a')) {
-        document.getElementById('hamburger').classList.remove('active');
-        document.getElementById('mainNav').classList.remove('mobile-open');
-    }
+function renderTools(){
+var g=document.getElementById('toolGrid'),nr=document.getElementById('noResults');
+var f=toolsData.slice();
+if(currentCategory!=='all')f=f.filter(function(t){return t.category===currentCategory});
+var q=document.getElementById('searchInput').value.toLowerCase().trim();
+if(q)f=f.filter(function(t){
+return t.name.toLowerCase().indexOf(q)>=0||t.nameZh.indexOf(q)>=0||
+t.description.indexOf(q)>=0||t.tags.some(function(tag){return tag.indexOf(q)>=0});
 });
-
-// ===== Back to Top =====
-window.addEventListener('scroll', () => {
-    const btn = document.getElementById('backToTop');
-    if (window.scrollY > 400) {
-        btn.classList.add('visible');
-    } else {
-        btn.classList.remove('visible');
-    }
-});
-
-// ===== Theme Toggle =====
-function toggleTheme() {
-    document.body.classList.toggle('light');
-    const isLight = document.body.classList.contains('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    document.getElementById('themeToggle').textContent = isLight ? '☀️' : '🌙';
+if(currentFilter==='featured')f=f.filter(function(t){return t.featured});
+else if(currentFilter==='free')f=f.filter(function(t){return t.pricing.indexOf('免费')>=0||t.pricing.indexOf('开源')>=0});
+else if(currentFilter==='popular')f=f.sort(function(a,b){return b.rating-a.rating});
+if(f.length===0){g.innerHTML='';nr.style.display='block';return}
+nr.style.display='none';
+g.innerHTML=f.map(function(tool,i){
+var cat=categoriesData.find(function(c){return c.id===tool.category});
+return '<a href="tool.html?id='+tool.id+'" class="tc" style="animation-delay:'+i*0.05+'s">'+
+'<div class="th"><div class="ticon">'+(cat?cat.icon:'&#129302;')+'</div><div>'+
+'<div class="tn">'+tool.nameZh+(tool.featured?'<span class="fb">精选</span>':'')+'</div>'+
+'<div class="tp">'+tool.pricing+'</div></div></div>'+
+'<div class="td">'+tool.description+'</div>'+
+'<div class="tf"><div class="ttags">'+tool.tags.slice(0,3).map(function(t){return '<span class="tt">'+t+'</span>'}).join('')+
+'</div><div class="tr">&#11088; '+tool.rating+'</div></div></a>';
+}).join('');
 }
 
-// Load saved theme
-(function() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
-        document.body.classList.add('light');
-        document.getElementById('themeToggle').textContent = '☀️';
-    }
+function filterByCategory(id){
+currentCategory=currentCategory===id?'all':id;
+renderCategories();renderTools();
+var title=document.querySelector('#tools .st');
+if(currentCategory==='all')title.innerHTML='&#128293; 热门工具';
+else{var cat=categoriesData.find(function(c){return c.id===currentCategory});
+title.innerHTML=cat.icon+' '+cat.name;}
+}
+
+function setupSearch(){
+var input=document.getElementById('searchInput'),debounce;
+input.addEventListener('input',function(){
+clearTimeout(debounce);
+debounce=setTimeout(function(){currentCategory='all';renderCategories();renderTools()},200);
+});
+}
+
+function setupFilters(){
+document.querySelectorAll('.fbtn').forEach(function(btn){
+btn.addEventListener('click',function(){
+document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active')});
+btn.classList.add('active');currentFilter=btn.dataset.filter;renderTools();
+});
+});
+}
+
+function submitTool(){
+var email=document.getElementById('submitEmail').value.trim();
+var url=document.getElementById('submitUrl').value.trim();
+if(!email||!url){showToast('请填写邮箱和工具网址');return}
+if(url.indexOf('http')!==0){showToast('请输入有效的网址');return}
+showToast('提交成功！审核通过后会收录');
+document.getElementById('submitEmail').value='';
+document.getElementById('submitUrl').value='';
+}
+
+function showToast(msg){
+var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+setTimeout(function(){t.classList.remove('show')},3000);
+}
+
+function toggleTheme(){
+document.body.classList.toggle('light');
+var isLight=document.body.classList.contains('light');
+localStorage.setItem('theme',isLight?'light':'dark');
+document.getElementById('themeToggle').innerHTML=isLight?'&#9728;&#65039;':'&#127769;';
+}
+
+(function(){
+var s=localStorage.getItem('theme');
+if(s==='light'){document.body.classList.add('light');
+document.getElementById('themeToggle').innerHTML='&#9728;&#65039;';}
 })();
 
-// ===== Search Highlight =====
-function highlightText(text, query) {
-    if (!query) return text;
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    return text.replace(regex, '<span class="highlight">$1</span>');
-}
+window.addEventListener('scroll',function(){
+var b=document.getElementById('backToTop');
+if(window.scrollY>400)b.classList.add('vis');else b.classList.remove('vis');
+});
 
-// ===== Start =====
 init();
 </script>
-
 </body>
 </html>
