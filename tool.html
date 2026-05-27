@@ -288,7 +288,7 @@ async function init() {
                 <div class="tool-tags-lg">
                     ${tool.tags.map(t => `<span class="tool-tag-lg">${t}</span>`).join('')}
                 </div>
-                <a href="${tool.url}" target="_blank" rel="noopener" class="visit-btn">
+                <a href="${tool.url}${tool.affiliate ? '?ref=aitoolso' : ''}" target="_blank" rel="noopener" class="visit-btn">
                     访问 ${tool.nameZh} →
                 </a>
             </div>

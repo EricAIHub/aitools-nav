@@ -479,6 +479,29 @@
             padding: 60px 24px;
             color: var(--text-dim);
         }
+
+        /* ===== Ad Placeholder ===== */
+        .ad-banner {
+            background: var(--card-bg);
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 13px;
+            margin: 32px auto;
+            max-width: 728px;
+        }
+        .ad-sidebar {
+            background: var(--card-bg);
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 12px;
+            margin: 20px 0;
+        }
         .no-results .emoji { font-size: 48px; margin-bottom: 16px; }
         /* ===== Favorite Button ===== */
         .fav-btn {
@@ -804,7 +827,7 @@
             <a href="#categories">分类</a>
             <a href="#tools">工具</a>
             <a href="#submit">提交</a>
-            <a href="#about">关于</a>
+            <a href="#about">关于</a>`n            <a href="pricing.html">收录方案</a>
             <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换主题">🌙</button>
         </nav>
     </div>
@@ -854,6 +877,11 @@
     </div>
 </section>
 
+
+<!-- Ad Placeholder - Top -->
+<div class="ad-banner" id="adTop">
+    <div>广告位招租 · 联系 hello@aitool.so</div>
+</div>
 <section class="section" id="latest">
     <div class="section-title">🆕 最新工具</div>
     <div class="tool-grid" id="latestGrid"></div>
