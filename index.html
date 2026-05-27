@@ -23,7 +23,7 @@ nav a:hover{color:var(--t)}
 .sb{max-width:640px;margin:0 auto;position:relative}
 .sb input{width:100%;padding:16px 24px 16px 52px;border-radius:16px;border:1px solid var(--bd);background:var(--cb);color:var(--t);font-size:16px;outline:none;transition:border-color .3s,box-shadow .3s}
 .sb input:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(108,92,231,.2)}
-.sb::before{content:"&#128269;";position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:18px}
+.sb::before{content:"\1F50D";position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:18px}
 .stats{display:flex;justify-content:center;gap:48px;margin-top:40px}
 .stat{text-align:center}
 .sn{font-size:32px;font-weight:800;color:var(--s)}
@@ -44,7 +44,7 @@ nav a:hover{color:var(--t)}
 .ticon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--s));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .tn{font-size:18px;font-weight:700}
 .tp{font-size:12px;color:var(--ok);background:rgba(0,184,148,.1);padding:2px 10px;border-radius:20px;margin-top:4px;display:inline-block}
-.td{font-size:14px;color:var(--td);margin-bottom:16px;flex:1;line-height:1.7}
+.tdesc{font-size:14px;color:var(--td);margin-bottom:16px;flex:1;line-height:1.7}
 .tf{display:flex;align-items:center;justify-content:space-between}
 .ttags{display:flex;gap:6px;flex-wrap:wrap}
 .tt{font-size:12px;color:var(--td);background:rgba(136,136,170,.1);padding:4px 10px;border-radius:6px}
@@ -66,12 +66,11 @@ footer a{color:var(--pl);text-decoration:none}
 .toast{position:fixed;bottom:24px;right:24px;background:var(--ok);color:white;padding:14px 24px;border-radius:12px;font-weight:600;opacity:0;transform:translateY(20px);transition:all .3s;z-index:1000}
 .toast.show{opacity:1;transform:translateY(0)}
 .nr{text-align:center;padding:60px 24px;color:var(--td)}
-.hl{background:rgba(253,121,168,.25);color:var(--ac);padding:0 2px;border-radius:3px}
 .btt{position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:var(--p);color:white;border:none;font-size:20px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;z-index:99;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(108,92,231,.3)}
 .btt.vis{opacity:1;transform:translateY(0)}
 .btt:hover{background:var(--pl);transform:translateY(-2px)}
-.tt-toggle{background:none;border:1px solid var(--bd);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:18px;transition:all .2s;color:var(--t)}
-.tt-toggle:hover{border-color:var(--p)}
+.ttg{background:none;border:1px solid var(--bd);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:18px;transition:all .2s;color:var(--t)}
+.ttg:hover{border-color:var(--p)}
 body.light{--bg:#F5F5FA;--cb:#FFFFFF;--ch:#F0F0F8;--t:#1A1A2E;--td:#666688;--bd:#DDDDE8}
 body.light header{background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(0,206,201,.05))}
 body.light .sb input,body.light .cc,body.light .tc{background:#fff;border-color:var(--bd)}
@@ -89,7 +88,7 @@ body.light .sb input,body.light .cc,body.light .tc{background:#fff;border-color:
 <a href="#tools">工具</a>
 <a href="#submit">提交</a>
 <a href="#about">关于</a>
-<button class="tt-toggle" id="themeToggle" onclick="toggleTheme()">&#127769;</button>
+<button class="ttg" id="themeToggle" onclick="toggleTheme()">&#127769;</button>
 </nav>
 </div>
 </header>
@@ -188,7 +187,7 @@ return '<a href="tool.html?id='+tool.id+'" class="tc" style="animation-delay:'+i
 '<div class="th"><div class="ticon">'+(cat?cat.icon:'&#129302;')+'</div><div>'+
 '<div class="tn">'+tool.nameZh+(tool.featured?'<span class="fb">精选</span>':'')+'</div>'+
 '<div class="tp">'+tool.pricing+'</div></div></div>'+
-'<div class="td">'+tool.description+'</div>'+
+'<div class="tdesc">'+tool.description+'</div>'+
 '<div class="tf"><div class="ttags">'+tool.tags.slice(0,3).map(function(t){return '<span class="tt">'+t+'</span>'}).join('')+
 '</div><div class="tr">&#11088; '+tool.rating+'</div></div></a>';
 }).join('');
