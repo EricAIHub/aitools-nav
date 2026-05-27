@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AiTool.so - 发现最好的 AI 工具</title>
+    <meta name="description" content="发现最好用的人工智能工具。精选 AI 对话、绘画、视频、编程、写作等 10 大分类工具导航，帮你找到最适合的 AI 工具。">
+    <meta name="keywords" content="AI工具,人工智能,ChatGPT,Midjourney,AI导航,工具推荐">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #6C5CE7;
+            --primary-light: #A29BFE;
+            --secondary: #00CEC9;
+            --bg: #0F0F1A;
+            --card-bg: #1A1A2E;
+            --card-hover: #232342;
+            --text: #E8E8F0;
+            --text-dim: #8888AA;
+            --border: #2A2A45;
+            --accent: #FD79A8;
+            --success: #00B894;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* ===== Header ===== */
+        header {
+            background: linear-gradient(135deg, rgba(108,92,231,0.15) 0%, rgba(0,206,201,0.1) 100%);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+        }
+        
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .logo span { font-size: 14px; -webkit-text-fill-color: var(--text-dim); margin-left: 8px; font-weight: 400; }
+        
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text); }
+        nav a.submit-btn {
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        nav a.submit-btn:hover { background: var(--primary-light); }
+        
+        /* ===== Hero ===== */
+        .hero {
+            text-align: center;
+            padding: 80px 24px 60px;
+            background: radial-gradient(ellipse at center, rgba(108,92,231,0.08) 0%, transparent 70%);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* ===== Search ===== */
+        .search-box {
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px 16px 52px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108,92,231,0.2);
+        }
+        
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+        
+        /* ===== Stats ===== */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+        }
+        
+        .stat { text-align: center; }
+        .stat-num { font-size: 32px; font-weight: 800; color: var(--secondary); }
+        .stat-label { font-size: 14px; color: var(--text-dim); margin-top: 4px; }
+        
+        /* ===== Categories ===== */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        
+        .category-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 32px rgba(108,92,231,0.2);
+        }
+        
+        .category-card.active {
+            border-color: var(--primary);
+            background: rgba(108,92,231,0.1);
+        }
+        
+        .category-icon { font-size: 36px; margin-bottom: 12px; }
+        .category-name { font-size: 15px; font-weight: 600; }
+        .category-count { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+        
+        /* ===== Tool Cards ===== */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 32px rgba(108,92,231,0.15);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        
+        .tool-name { font-size: 18px; font-weight: 700; }
+        .tool-pricing {
+            font-size: 12px;
+            color: var(--success);
+            background: rgba(0,184,148,0.1);
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-top: 4px;
+            display: inline-block;
+        }
+        
+        .tool-desc {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            flex: 1;
+            line-height: 1.7;
+        }
+        
+        .tool-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .tool-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        
+        .tool-tag {
+            font-size: 12px;
+            color: var(--text-dim);
+            background: rgba(136,136,170,0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        
+        .tool-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #FDCB6E;
+        }
+        
+        .featured-badge {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        /* ===== Filter bar ===== */
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover { border-color: var(--primary); color: var(--text); }
+        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        /* ===== Submit Form ===== */
+        .submit-section {
+            background: linear-gradient(135deg, rgba(108,92,231,0.08) 0%, rgba(0,206,201,0.05) 100%);
+            border-radius: 24px;
+            padding: 48px;
+            margin: 60px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .submit-section h2 { font-size: 28px; margin-bottom: 12px; }
+        .submit-section p { color: var(--text-dim); margin-bottom: 32px; }
+        
+        .submit-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .submit-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text);
+            font-size: 15px;
+            outline: none;
+        }
+        
+        .submit-form button {
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        
+        .submit-form button:hover { background: var(--primary-light); }
+        
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+        
+        footer a { color: var(--primary-light); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .stats { gap: 24px; }
+            .tool-grid { grid-template-columns: 1fr; }
+            .category-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .header-inner { flex-wrap: wrap; gap: 12px; }
+            nav a { margin-left: 16px; }
+            .submit-form { flex-direction: column; }
+        }
+        
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tool-card { animation: fadeInUp 0.4s ease-out; }
+        
+        /* ===== Toast ===== */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--success);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        
+        /* ===== No results ===== */
+        .no-results {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--text-dim);
+        }
+        .no-results .emoji { font-size: 48px; margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">AiTool.so <span>AI 工具导航</span></a>
+        <nav>
+            <a href="#categories">分类</a>
+            <a href="#tools">工具</a>
+            <a href="#submit">提交</a>
+            <a href="#about">关于</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>发现最好的 AI 工具</h1>
+    <p>精选 100+ 人工智能工具，覆盖对话、绘画、视频、编程、写作等 10 大分类，帮你找到最适合的 AI 利器</p>
+    
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索 AI 工具... 例如：ChatGPT、绘画、编程">
+    </div>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num" id="toolCount">20</div>
+            <div class="stat-label">AI 工具</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">10</div>
+            <div class="stat-label">分类</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">每日</div>
+            <div class="stat-label">持续更新</div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="categories">
+    <div class="section-title">📂 工具分类</div>
+    <div class="category-grid" id="categoryGrid"></div>
+</section>
+
+<section class="section" id="tools">
+    <div class="section-title">🔥 热门工具</div>
+    <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="featured">⭐ 精选</button>
+        <button class="filter-btn" data-filter="free">🆓 免费</button>
+        <button class="filter-btn" data-filter="popular">🔥 最热</button>
+    </div>
+    <div class="tool-grid" id="toolGrid"></div>
+    <div class="no-results" id="noResults" style="display:none;">
+        <div class="emoji">🔍</div>
+        <p>没有找到匹配的工具，试试其他关键词？</p>
+    </div>
+</section>
+
+<section class="submit-section" id="submit">
+    <h2>🚀 提交你的 AI 工具</h2>
+    <p>发现了好用的 AI 工具？提交给我们，审核通过后免费收录</p>
+    <div class="submit-form">
+        <input type="email" id="submitEmail" placeholder="你的邮箱">
+        <input type="url" id="submitUrl" placeholder="工具网址 (https://...)">
+        <button onclick="submitTool()">提交工具</button>
+    </div>
+</section>
+
+<footer id="about">
+    <p style="margin-bottom:12px;">
+        <a href="/">AiTool.so</a> — 发现最好的 AI 工具
+    </p>
+    <p>© 2026 AiTool.so · 持续收录最优质的 AI 工具</p>
+    <p style="margin-top:12px;font-size:12px;">
+        联系我们：hello@aitool.so · 
+        <a href="https://twitter.com/aitoolso" target="_blank">Twitter</a>
+    </p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== Data =====
+let toolsData = [];
+let categoriesData = [];
+let currentCategory = 'all';
+let currentFilter = 'all';
+
+// ===== Init =====
+async function init() {
+    try {
+        const resp = await fetch('./data/tools.json');
+        const data = await resp.json();
+        toolsData = data.tools;
+        categoriesData = data.categories;
+        renderCategories();
+        renderTools();
+        setupSearch();
+        setupFilters();
+        updateStats();
+    } catch (e) {
+        console.error('Failed to load tools data:', e);
+    }
+}
+
+// ===== Render Categories =====
+function renderCategories() {
+    const grid = document.getElementById('categoryGrid');
+    grid.innerHTML = categoriesData.map(cat => {
+        const count = toolsData.filter(t => t.category === cat.id).length;
+        return `
+            <a class="category-card ${currentCategory === cat.id ? 'active' : ''}" 
+               onclick="filterByCategory('${cat.id}')" href="#tools">
+                <div class="category-icon">${cat.icon}</div>
+                <div class="category-name">${cat.name}</div>
+                <div class="category-count">${count} 个工具</div>
+            </a>
+        `;
+    }).join('');
+}
+
+// ===== Render Tools =====
+function renderTools() {
+    const grid = document.getElementById('toolGrid');
+    const noResults = document.getElementById('noResults');
+    
+    let filtered = [...toolsData];
+    
+    // Category filter
+    if (currentCategory !== 'all') {
+        filtered = filtered.filter(t => t.category === currentCategory);
+    }
+    
+    // Search filter
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    if (query) {
+        filtered = filtered.filter(t => 
+            t.name.toLowerCase().includes(query) ||
+            t.nameZh.includes(query) ||
+            t.description.includes(query) ||
+            t.tags.some(tag => tag.includes(query))
+        );
+    }
+    
+    // Filter buttons
+    if (currentFilter === 'featured') {
+        filtered = filtered.filter(t => t.featured);
+    } else if (currentFilter === 'free') {
+        filtered = filtered.filter(t => 
+            t.pricing.includes('免费') || t.pricing.includes('开源')
+        );
+    } else if (currentFilter === 'popular') {
+        filtered = filtered.sort((a, b) => b.rating - a.rating);
+    }
+    
+    if (filtered.length === 0) {
+        grid.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+    }
+    
+    noResults.style.display = 'none';
+    
+    grid.innerHTML = filtered.map((tool, i) => {
+        const cat = categoriesData.find(c => c.id === tool.category);
+        return `
+            <a href="${tool.url}" target="_blank" rel="noopener" class="tool-card" 
+               style="animation-delay: ${i * 0.05}s">
+                <div class="tool-header">
+                    <div class="tool-icon">${cat ? cat.icon : '🤖'}</div>
+                    <div>
+                        <div class="tool-name">
+                            ${tool.nameZh}
+                            ${tool.featured ? '<span class="featured-badge">精选</span>' : ''}
+                        </div>
+                        <div class="tool-pricing">${tool.pricing}</div>
+                    </div>
+                </div>
+                <div class="tool-desc">${tool.description}</div>
+                <div class="tool-footer">
+                    <div class="tool-tags">
+                        ${tool.tags.slice(0, 3).map(t => `<span class="tool-tag">${t}</span>`).join('')}
+                    </div>
+                    <div class="tool-rating">⭐ ${tool.rating}</div>
+                </div>
+            </a>
+        `;
+    }).join('');
+}
+
+// ===== Filter by Category =====
+function filterByCategory(catId) {
+    if (currentCategory === catId) {
+        currentCategory = 'all';
+    } else {
+        currentCategory = catId;
+    }
+    renderCategories();
+    renderTools();
+    
+    // Update section title
+    const title = document.querySelector('#tools .section-title');
+    if (currentCategory === 'all') {
+        title.textContent = '🔥 热门工具';
+    } else {
+        const cat = categoriesData.find(c => c.id === currentCategory);
+        title.textContent = `${cat.icon} ${cat.name}`;
+    }
+}
+
+// ===== Search =====
+function setupSearch() {
+    const input = document.getElementById('searchInput');
+    let debounce;
+    input.addEventListener('input', () => {
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+            currentCategory = 'all';
+            renderCategories();
+            renderTools();
+        }, 200);
+    });
+}
+
+// ===== Filter Buttons =====
+function setupFilters() {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            renderTools();
+        });
+    });
+}
+
+// ===== Update Stats =====
+function updateStats() {
+    document.getElementById('toolCount').textContent = toolsData.length;
+}
+
+// ===== Submit Tool =====
+function submitTool() {
+    const email = document.getElementById('submitEmail').value.trim();
+    const url = document.getElementById('submitUrl').value.trim();
+    
+    if (!email || !url) {
+        showToast('请填写邮箱和工具网址 ❌');
+        return;
+    }
+    
+    if (!url.startsWith('http')) {
+        showToast('请输入有效的网址 ❌');
+        return;
+    }
+    
+    // In production, this would send to a backend API
+    showToast('提交成功！审核通过后会收录 ✅');
+    document.getElementById('submitEmail').value = '';
+    document.getElementById('submitUrl').value = '';
+}
+
+// ===== Toast =====
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ===== Start =====
+init();
+</script>
+
+</body>
+</html>
