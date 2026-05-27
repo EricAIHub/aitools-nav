@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 工具详情 - AiTool.so</title>
+    <meta name="description" content="查看 AI 工具详细信息、评分、定价和使用场景。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ericaihub.github.io/aitools-nav/tool.html">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6C5CE7;
+            --primary-light: #A29BFE;
+            --secondary: #00CEC9;
+            --bg: #0F0F1A;
+            --card-bg: #1A1A2E;
+            --card-hover: #232342;
+            --text: #E8E8F0;
+            --text-dim: #8888AA;
+            --border: #2A2A45;
+            --accent: #FD79A8;
+            --success: #00B894;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, rgba(108,92,231,0.15) 0%, rgba(0,206,201,0.1) 100%);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .logo span { font-size: 14px; -webkit-text-fill-color: var(--text-dim); margin-left: 8px; font-weight: 400; }
+        nav a { color: var(--text-dim); text-decoration: none; margin-left: 28px; font-size: 15px; transition: color 0.2s; }
+        nav a:hover { color: var(--text); }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+        .breadcrumb a { color: var(--primary-light); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .tool-detail {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        .tool-hero {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+        .tool-icon-lg {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .tool-title { font-size: 32px; font-weight: 800; }
+        .tool-category-badge {
+            display: inline-block;
+            background: rgba(108,92,231,0.15);
+            color: var(--primary-light);
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        .tool-pricing-badge {
+            display: inline-block;
+            background: rgba(0,184,148,0.1);
+            color: var(--success);
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+        .tool-rating-lg {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #FDCB6E;
+            margin-top: 12px;
+        }
+        .tool-desc-lg {
+            font-size: 16px;
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+        .tool-tags-lg {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .tool-tag-lg {
+            font-size: 14px;
+            color: var(--text-dim);
+            background: rgba(136,136,170,0.1);
+            padding: 6px 14px;
+            border-radius: 8px;
+        }
+        .visit-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .visit-btn:hover { background: var(--primary-light); transform: translateY(-2px); }
+
+        .related-section {
+            margin-top: 48px;
+        }
+        .related-section h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .related-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        .related-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .related-card .rc-name { font-weight: 600; margin-bottom: 4px; }
+        .related-card .rc-desc { font-size: 13px; color: var(--text-dim); }
+
+        .not-found {
+            text-align: center;
+            padding: 80px 24px;
+        }
+        .not-found .emoji { font-size: 64px; margin-bottom: 16px; }
+        .not-found h2 { font-size: 24px; margin-bottom: 12px; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-top: 60px;
+        }
+        footer a { color: var(--primary-light); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .tool-hero { flex-direction: column; text-align: center; }
+            .tool-title { font-size: 24px; }
+            .tool-detail { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">AiTool.so <span>AI 工具导航</span></a>
+        <nav>
+            <a href="/#categories">分类</a>
+            <a href="/#tools">工具</a>
+            <a href="/submit.html">提交</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <div class="breadcrumb" id="breadcrumb">
+        <a href="/">首页</a> / <span id="breadcrumbCategory">工具</span> / <span id="breadcrumbName">详情</span>
+    </div>
+    <div id="toolContent"></div>
+</div>
+
+<footer>
+    <p style="margin-bottom:12px;"><a href="/">AiTool.so</a> — 发现最好的 AI 工具</p>
+    <p>© 2026 AiTool.so · 持续收录最优质的 AI 工具</p>
+</footer>
+
+<script>
+async function init() {
+    const params = new URLSearchParams(window.location.search);
+    const toolId = parseInt(params.get('id'));
+    
+    if (!toolId) {
+        showNotFound();
+        return;
+    }
+    
+    try {
+        const resp = await fetch('./data/tools.json');
+        const data = await resp.json();
+        const tool = data.tools.find(t => t.id === toolId);
+        
+        if (!tool) {
+            showNotFound();
+            return;
+        }
+        
+        const cat = data.categories.find(c => c.id === tool.category);
+        
+        // Update page title and meta
+        document.title = `${tool.nameZh} - AI 工具详情 | AiTool.so`;
+        document.querySelector('meta[name="description"]').content = 
+            `${tool.nameZh}: ${tool.description}。查看定价、评分和使用场景。`;
+        document.querySelector('link[rel="canonical"]').href = 
+            `https://ericaihub.github.io/aitools-nav/tool.html?id=${toolId}`;
+        
+        // Update breadcrumb
+        document.getElementById('breadcrumbCategory').textContent = cat ? cat.name : '工具';
+        document.getElementById('breadcrumbName').textContent = tool.nameZh;
+        
+        // Render tool detail
+        const related = data.tools
+            .filter(t => t.category === tool.category && t.id !== tool.id)
+            .slice(0, 3);
+        
+        document.getElementById('toolContent').innerHTML = `
+            <div class="tool-detail">
+                <div class="tool-hero">
+                    <div class="tool-icon-lg">${cat ? cat.icon : '🤖'}</div>
+                    <div>
+                        <div class="tool-title">${tool.nameZh}</div>
+                        <div>
+                            <span class="tool-category-badge">${cat ? cat.name : ''}</span>
+                            <span class="tool-pricing-badge">${tool.pricing}</span>
+                        </div>
+                        <div class="tool-rating-lg">⭐ ${tool.rating} / 5.0</div>
+                    </div>
+                </div>
+                <div class="tool-desc-lg">${tool.description}</div>
+                <div class="tool-tags-lg">
+                    ${tool.tags.map(t => `<span class="tool-tag-lg">${t}</span>`).join('')}
+                </div>
+                <a href="${tool.url}" target="_blank" rel="noopener" class="visit-btn">
+                    访问 ${tool.nameZh} →
+                </a>
+            </div>
+            
+            ${related.length > 0 ? `
+            <div class="related-section">
+                <h2>📂 同类工具推荐</h2>
+                <div class="related-grid">
+                    ${related.map(r => `
+                        <a href="tool.html?id=${r.id}" class="related-card">
+                            <div class="rc-name">${r.nameZh}</div>
+                            <div class="rc-desc">${r.description.substring(0, 60)}...</div>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+            ` : ''}
+        `;
+    } catch (e) {
+        showNotFound();
+    }
+}
+
+function showNotFound() {
+    document.getElementById('toolContent').innerHTML = `
+        <div class="not-found">
+            <div class="emoji">🔍</div>
+            <h2>工具未找到</h2>
+            <p>该工具可能已被移除或链接无效</p>
+            <a href="/" class="visit-btn" style="margin-top:20px;display:inline-block;">返回首页</a>
+        </div>
+    `;
+}
+
+init();
+</script>
+</body>
+</html>
