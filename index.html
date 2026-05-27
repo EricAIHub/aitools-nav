@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -480,6 +480,150 @@
             color: var(--text-dim);
         }
         .no-results .emoji { font-size: 48px; margin-bottom: 16px; }
+        
+        /* ===== Light Mode ===== */
+        body.light {
+            --bg: #F5F5FA;
+            --card-bg: #FFFFFF;
+            --card-hover: #F0F0F8;
+            --text: #1A1A2E;
+            --text-dim: #666688;
+            --border: #DDDDE8;
+        }
+        body.light header {
+            background: linear-gradient(135deg, rgba(108,92,231,0.08) 0%, rgba(0,206,201,0.05) 100%);
+        }
+        body.light .search-box input {
+            background: #fff;
+            border-color: var(--border);
+        }
+        body.light .category-card,
+        body.light .tool-card {
+            background: #fff;
+            border-color: var(--border);
+        }
+        
+        /* ===== Hamburger Menu ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 200;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        nav.mobile-open {
+            display: flex !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            z-index: 150;
+        }
+        nav.mobile-open a {
+            font-size: 24px;
+            margin-left: 0;
+        }
+        
+        /* ===== Back to Top ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(108,92,231,0.3);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== Theme Toggle ===== */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+        .theme-toggle:hover {
+            border-color: var(--primary);
+        }
+        
+        /* ===== Search Highlight ===== */
+        .highlight {
+            background: rgba(253,121,168,0.25);
+            color: var(--accent);
+            padding: 0 2px;
+            border-radius: 3px;
+        }
+        
+        /* ===== Enhanced Hover ===== */
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(108,92,231,0.1), rgba(0,206,201,0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .tool-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            nav { display: none; }
+            .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
+        }
     </style>
 </head>
 <body>
@@ -487,11 +631,15 @@
 <header>
     <div class="header-inner">
         <a href="/" class="logo">AiTool.so <span>AI 工具导航</span></a>
-        <nav>
+        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <nav id="mainNav">
             <a href="#categories">分类</a>
             <a href="#tools">工具</a>
             <a href="#submit">提交</a>
             <a href="#about">关于</a>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换主题">🌙</button>
         </nav>
     </div>
 </header>
@@ -567,6 +715,7 @@
 </footer>
 
 <div class="toast" id="toast"></div>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 // ===== Data =====
@@ -653,6 +802,9 @@ function renderTools() {
     
     grid.innerHTML = filtered.map((tool, i) => {
         const cat = categoriesData.find(c => c.id === tool.category);
+        const query = document.getElementById("searchInput").value.toLowerCase().trim();
+        const displayName = highlightText(tool.nameZh, query);
+        const displayDesc = highlightText(tool.description, query);
         return `
             <a href="tool.html?id=${tool.id}" class="tool-card" 
                style="animation-delay: ${i * 0.05}s">
@@ -660,13 +812,13 @@ function renderTools() {
                     <div class="tool-icon">${cat ? cat.icon : '🤖'}</div>
                     <div>
                         <div class="tool-name">
-                            ${tool.nameZh}
+                            ${displayName}
                             ${tool.featured ? '<span class="featured-badge">精�?/span>' : ''}
                         </div>
                         <div class="tool-pricing">${tool.pricing}</div>
                     </div>
                 </div>
-                <div class="tool-desc">${tool.description}</div>
+                <div class="tool-desc">${displayDesc}</div>
                 <div class="tool-footer">
                     <div class="tool-tags">
                         ${tool.tags.slice(0, 3).map(t => `<span class="tool-tag">${t}</span>`).join('')}
@@ -686,6 +838,9 @@ function renderLatest() {
     const latest = [...toolsData].slice(-6).reverse();
     grid.innerHTML = latest.map((tool, i) => {
         const cat = categoriesData.find(c => c.id === tool.category);
+        const query = "";
+        const displayName = tool.nameZh;
+        const displayDesc = tool.description;
         return `
             <a href="tool.html?id=${tool.id}" class="tool-card" 
                style="animation-delay: ${i * 0.05}s">
@@ -693,13 +848,13 @@ function renderLatest() {
                     <div class="tool-icon">${cat ? cat.icon : '🤖'}</div>
                     <div>
                         <div class="tool-name">
-                            ${tool.nameZh}
+                            ${displayName}
                             ${tool.featured ? '<span class="featured-badge">精选</span>' : ''}
                         </div>
                         <div class="tool-pricing">${tool.pricing}</div>
                     </div>
                 </div>
-                <div class="tool-desc">${tool.description}</div>
+                <div class="tool-desc">${displayDesc}</div>
                 <div class="tool-footer">
                     <div class="tool-tags">
                         ${tool.tags.slice(0, 3).map(t => `<span class="tool-tag">${t}</span>`).join('')}
@@ -789,6 +944,56 @@ function showToast(msg) {
     toast.textContent = msg;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ===== Mobile Menu =====
+function toggleMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('mainNav');
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('mobile-open');
+}
+
+// Close mobile menu on link click
+document.addEventListener('click', (e) => {
+    if (e.target.closest('#mainNav a')) {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('mainNav').classList.remove('mobile-open');
+    }
+});
+
+// ===== Back to Top =====
+window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+
+// ===== Theme Toggle =====
+function toggleTheme() {
+    document.body.classList.toggle('light');
+    const isLight = document.body.classList.contains('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    document.getElementById('themeToggle').textContent = isLight ? '☀️' : '🌙';
+}
+
+// Load saved theme
+(function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+        document.body.classList.add('light');
+        document.getElementById('themeToggle').textContent = '☀️';
+    }
+})();
+
+// ===== Search Highlight =====
+function highlightText(text, query) {
+    if (!query) return text;
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
 }
 
 // ===== Start =====
