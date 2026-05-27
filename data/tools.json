@@ -55,6 +55,41 @@
       "featured": false, "affiliate": false
     },
     {
+      "id": 53, "name": "Qwen", "nameZh": "通义千问", "category": "chat",
+      "description": "阿里出品的 AI 大模型，多语言能力强，支持多种应用场景",
+      "url": "https://tongyi.aliyun.com", "pricing": "免费",
+      "rating": 4.5, "tags": ["对话", "中文", "阿里", "多模态"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 54, "name": "Doubao", "nameZh": "豆包", "category": "chat",
+      "description": "字节跳动出品的 AI 助手，对话自然流畅",
+      "url": "https://www.doubao.com", "pricing": "免费",
+      "rating": 4.4, "tags": ["对话", "中文", "字节跳动"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 55, "name": "ChatGLM", "nameZh": "智谱清言", "category": "chat",
+      "description": "智谱 AI 出品，基于 GLM 模型的对话助手",
+      "url": "https://chatglm.cn", "pricing": "免费",
+      "rating": 4.4, "tags": ["对话", "中文", "开源"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 56, "name": "Coze", "nameZh": "Coze", "category": "chat",
+      "description": "字节跳动出品的 AI Bot 构建平台，零代码创建智能助手",
+      "url": "https://www.coze.com", "pricing": "免费",
+      "rating": 4.5, "tags": ["Bot构建", "无代码", "字节跳动"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 57, "name": "Poe", "nameZh": "Poe", "category": "chat",
+      "description": "Quora 出品的 AI 聚合平台，一站式访问多种大模型",
+      "url": "https://poe.com", "pricing": "免费版 + 订阅",
+      "rating": 4.4, "tags": ["聚合", "多模型", "Quora"],
+      "featured": false, "affiliate": false
+    },
+    {
       "id": 4, "name": "Midjourney", "nameZh": "Midjourney", "category": "image",
       "description": "顶级 AI 绘画工具，生成高质量艺术图像和设计素材",
       "url": "https://midjourney.com", "pricing": "Basic $10/月起",
@@ -97,6 +132,34 @@
       "featured": true, "affiliate": false
     },
     {
+      "id": 58, "name": "Tongyi Wanxiang", "nameZh": "通义万相", "category": "image",
+      "description": "阿里出品的 AI 绘画工具，中文理解能力强",
+      "url": "https://tongyi.aliyun.com/wanxiang", "pricing": "免费额度",
+      "rating": 4.4, "tags": ["绘画", "中文", "阿里"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 59, "name": "Adobe Firefly", "nameZh": "Adobe Firefly", "category": "image",
+      "description": "Adobe 出品的商用安全 AI 图像生成工具",
+      "url": "https://firefly.adobe.com", "pricing": "免费额度 + 付费",
+      "rating": 4.6, "tags": ["绘画", "Adobe", "商用"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 60, "name": "Playground AI", "nameZh": "Playground AI", "category": "image",
+      "description": "免费 AI 图像生成平台，支持多种风格和编辑",
+      "url": "https://playground.com", "pricing": "免费版 + 付费",
+      "rating": 4.5, "tags": ["绘画", "免费", "编辑"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 61, "name": "SeaArt", "nameZh": "SeaArt", "category": "image",
+      "description": "AI 绘画社区和生成平台，模型丰富，中文友好",
+      "url": "https://www.seaart.ai", "pricing": "免费额度 + 付费",
+      "rating": 4.4, "tags": ["绘画", "社区", "中文"],
+      "featured": false, "affiliate": false
+    },
+    {
       "id": 7, "name": "Sora", "nameZh": "Sora", "category": "video",
       "description": "OpenAI 出品的 AI 视频生成，文字转视频",
       "url": "https://sora.com", "pricing": "ChatGPT Plus 包含",
@@ -129,6 +192,41 @@
       "description": "AI 数字人视频生成，支持多语言口型同步",
       "url": "https://heygen.com", "pricing": "免费试用 + 付费",
       "rating": 4.6, "tags": ["数字人", "视频", "多语言"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 62, "name": "Luma Dream Machine", "nameZh": "Luma Dream Machine", "category": "video",
+      "description": "Luma AI 出品的高质量视频生成工具，支持图生视频",
+      "url": "https://lumalabs.ai/dream-machine", "pricing": "免费额度 + 付费",
+      "rating": 4.5, "tags": ["视频生成", "图生视频"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 63, "name": "Jimeng AI", "nameZh": "即梦AI", "category": "video",
+      "description": "字节跳动出品的 AI 视频和图像生成工具",
+      "url": "https://jimeng.jianying.com", "pricing": "免费额度",
+      "rating": 4.4, "tags": ["视频生成", "图像生成", "字节跳动"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 64, "name": "PixVerse", "nameZh": "PixVerse", "category": "video",
+      "description": "AI 视频生成平台，支持多模态输入",
+      "url": "https://pixverse.ai", "pricing": "免费额度 + 付费",
+      "rating": 4.4, "tags": ["视频生成", "多模态"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 65, "name": "Viggle", "nameZh": "Viggle", "category": "video",
+      "description": "AI 角色动画生成工具，让静态人物动起来",
+      "url": "https://viggle.ai", "pricing": "免费额度 + 付费",
+      "rating": 4.3, "tags": ["动画", "角色", "视频"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 66, "name": "Synthesia", "nameZh": "Synthesia", "category": "video",
+      "description": "AI 虚拟人视频生成平台，适合企业培训和营销",
+      "url": "https://www.synthesia.io", "pricing": "Starter $22/月起",
+      "rating": 4.6, "tags": ["虚拟人", "企业", "培训"],
       "featured": false, "affiliate": false
     },
     {
@@ -167,6 +265,41 @@
       "featured": false, "affiliate": false
     },
     {
+      "id": 67, "name": "Tingwu", "nameZh": "通义听悟", "category": "audio",
+      "description": "阿里出品的 AI 音视频转写和摘要工具",
+      "url": "https://tingwu.aliyun.com", "pricing": "免费额度",
+      "rating": 4.4, "tags": ["转写", "摘要", "会议"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 68, "name": "Descript", "nameZh": "Descript", "category": "audio",
+      "description": "AI 驱动的音视频编辑工具，支持文字编辑音频",
+      "url": "https://www.descript.com", "pricing": "免费版 + 付费",
+      "rating": 4.6, "tags": ["音频编辑", "视频编辑", "转文字"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 69, "name": "AIVA", "nameZh": "AIVA", "category": "audio",
+      "description": "AI 作曲家，生成电影级配乐和背景音乐",
+      "url": "https://www.aiva.ai", "pricing": "免费版 + 付费",
+      "rating": 4.5, "tags": ["作曲", "配乐", "背景音乐"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 70, "name": "Speechify", "nameZh": "Speechify", "category": "audio",
+      "description": "AI 文本转语音工具，支持多种语言和声音",
+      "url": "https://speechify.com", "pricing": "免费版 + Premium",
+      "rating": 4.5, "tags": ["文本转语音", "朗读", "多语言"],
+      "featured": false, "affiliate": false
+    },
+    {
+      "id": 71, "name": "Rask AI", "nameZh": "Rask AI", "category": "audio",
+      "description": "AI 视频配音和翻译工具，支持 130+ 语言",
+      "url": "https://www.rask.ai", "pricing": "免费试用 + 付费",
+      "rating": 4.4, "tags": ["配音", "翻译", "多语言"],
+      "featured": false, "affiliate": false
+    },
+    {
       "id": 11, "name": "Jasper", "nameZh": "Jasper", "category": "writing",
       "description": "AI 营销文案生成器，专为商业内容设计",
       "url": "https://jasper.ai", "pricing": "Creator $49/月起",
@@ -197,184 +330,4 @@
     {
       "id": 35, "name": "秘塔写作猫", "nameZh": "秘塔写作猫", "category": "writing",
       "description": "中文 AI 写作助手，支持多种文体和场景",
-      "url": "https://xiezuocat.com", "pricing": "免费版 + 付费",
-      "rating": 4.3, "tags": ["中文写作", "文案"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 13, "name": "GitHub Copilot", "nameZh": "GitHub Copilot", "category": "code",
-      "description": "AI 编程助手，代码自动补全和生成",
-      "url": "https://github.com/features/copilot", "pricing": "$10/月",
-      "rating": 4.8, "tags": ["编程", "代码补全"],
-      "featured": true, "affiliate": false
-    },
-    {
-      "id": 14, "name": "Cursor", "nameZh": "Cursor", "category": "code",
-      "description": "AI 优先的代码编辑器，深度集成 AI 编程能力",
-      "url": "https://cursor.sh", "pricing": "免费版 + Pro $20/月",
-      "rating": 4.9, "tags": ["编程", "编辑器", "AI IDE"],
-      "featured": true, "affiliate": false
-    },
-    {
-      "id": 15, "name": "v0", "nameZh": "v0", "category": "code",
-      "description": "Vercel 出品，AI 生成 React/UI 组件代码",
-      "url": "https://v0.dev", "pricing": "免费额度",
-      "rating": 4.7, "tags": ["前端", "UI生成", "React"],
-      "featured": true, "affiliate": false
-    },
-    {
-      "id": 36, "name": "Replit", "nameZh": "Replit", "category": "code",
-      "description": "在线 AI 编程平台，支持一键部署和协作",
-      "url": "https://replit.com", "pricing": "免费版 + Pro $20/月",
-      "rating": 4.6, "tags": ["在线编程", "部署", "协作"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 37, "name": "Bolt.new", "nameZh": "Bolt.new", "category": "code",
-      "description": "StackBlitz 出品，AI 一句话生成全栈应用",
-      "url": "https://bolt.new", "pricing": "免费额度 + 付费",
-      "rating": 4.7, "tags": ["全栈", "快速开发"],
-      "featured": true, "affiliate": false
-    },
-    {
-      "id": 16, "name": "Canva AI", "nameZh": "Canva AI", "category": "design",
-      "description": "Canva 集成的 AI 设计功能，智能模板和素材生成",
-      "url": "https://canva.com", "pricing": "免费版 + Pro $13/月",
-      "rating": 4.6, "tags": ["设计", "模板", "平面"],
-      "featured": false, "affiliate": true
-    },
-    {
-      "id": 17, "name": "Remove.bg", "nameZh": "Remove.bg", "category": "design",
-      "description": "AI 一键去背景，精确到发丝",
-      "url": "https://remove.bg", "pricing": "免费额度 + 付费",
-      "rating": 4.7, "tags": ["去背景", "图片编辑"],
-      "featured": false, "affiliate": true
-    },
-    {
-      "id": 38, "name": "Figma AI", "nameZh": "Figma AI", "category": "design",
-      "description": "Figma 集成的 AI 设计功能，智能布局和组件生成",
-      "url": "https://figma.com", "pricing": "免费版 + 付费",
-      "rating": 4.7, "tags": ["UI设计", "协作", "原型"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 39, "name": "美图 AI", "nameZh": "美图 AI", "category": "design",
-      "description": "美图秀秀 AI 功能，智能修图和人像美化",
-      "url": "https://meitu.com", "pricing": "免费版 + 付费",
-      "rating": 4.3, "tags": ["修图", "人像", "美化"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 40, "name": "Clipdrop", "nameZh": "Clipdrop", "category": "design",
-      "description": "Stability AI 出品的 AI 图像编辑工具套件",
-      "url": "https://clipdrop.co", "pricing": "免费版 + 付费",
-      "rating": 4.5, "tags": ["图像编辑", "去背景", "放大"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 18, "name": "Notion AI", "nameZh": "Notion AI", "category": "productivity",
-      "description": "Notion 集成的 AI 功能，笔记整理、内容生成",
-      "url": "https://notion.so", "pricing": "AI 加购 $10/月",
-      "rating": 4.6, "tags": ["笔记", "知识管理"],
-      "featured": false, "affiliate": true
-    },
-    {
-      "id": 19, "name": "Perplexity", "nameZh": "Perplexity", "category": "productivity",
-      "description": "AI 搜索引擎，带引用来源的智能搜索",
-      "url": "https://perplexity.ai", "pricing": "免费版 + Pro $20/月",
-      "rating": 4.8, "tags": ["搜索", "研究"],
-      "featured": true, "affiliate": false
-    },
-    {
-      "id": 20, "name": "Gamma", "nameZh": "Gamma", "category": "productivity",
-      "description": "AI PPT 生成，输入主题自动创建精美演示文稿",
-      "url": "https://gamma.app", "pricing": "免费额度 + Pro",
-      "rating": 4.7, "tags": ["PPT", "演示文稿"],
-      "featured": true, "affiliate": false
-    },
-    {
-      "id": 41, "name": "Otter.ai", "nameZh": "Otter.ai", "category": "productivity",
-      "description": "AI 会议记录和转录工具，自动生成会议摘要",
-      "url": "https://otter.ai", "pricing": "免费版 + Pro $17/月",
-      "rating": 4.5, "tags": ["会议记录", "转录"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 42, "name": "Monica", "nameZh": "Monica", "category": "productivity",
-      "description": "AI 浏览器助手，集对话、翻译、写作于一体",
-      "url": "https://monica.im", "pricing": "免费版 + Pro",
-      "rating": 4.5, "tags": ["浏览器", "翻译", "写作"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 43, "name": "Khan Academy Khanmigo", "nameZh": "Khanmigo", "category": "education",
-      "description": "可汗学院 AI 导师，个性化学习辅导",
-      "url": "https://khanacademy.org/khan-labs", "pricing": "免费",
-      "rating": 4.7, "tags": ["学习", "辅导", "教育"],
-      "featured": true, "affiliate": false
-    },
-    {
-      "id": 44, "name": "Duolingo Max", "nameZh": "Duolingo Max", "category": "education",
-      "description": "AI 驱动的语言学习应用，支持对话练习",
-      "url": "https://duolingo.com", "pricing": "免费版 + Max $30/月",
-      "rating": 4.6, "tags": ["语言学习", "对话练习"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 45, "name": "Photomath", "nameZh": "Photomath", "category": "education",
-      "description": "AI 数学解题工具，拍照即可解答数学题",
-      "url": "https://photomath.com", "pricing": "免费版 + Plus",
-      "rating": 4.5, "tags": ["数学", "解题", "拍照"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 46, "name": "Quizlet AI", "nameZh": "Quizlet AI", "category": "education",
-      "description": "AI 辅助记忆和学习卡片工具",
-      "url": "https://quizlet.com", "pricing": "免费版 + Plus",
-      "rating": 4.4, "tags": ["记忆", "学习卡片"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 47, "name": "Coursera AI", "nameZh": "Coursera AI", "category": "education",
-      "description": "Coursera AI 辅助学习，个性化课程推荐和辅导",
-      "url": "https://coursera.org", "pricing": "免费旁听 + 付费证书",
-      "rating": 4.5, "tags": ["在线课程", "学习"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 48, "name": "HubSpot AI", "nameZh": "HubSpot AI", "category": "business",
-      "description": "AI 驱动的 CRM 和营销自动化平台",
-      "url": "https://hubspot.com", "pricing": "免费版 + 付费",
-      "rating": 4.6, "tags": ["CRM", "营销", "自动化"],
-      "featured": false, "affiliate": true
-    },
-    {
-      "id": 49, "name": "Intercom AI", "nameZh": "Intercom AI", "category": "business",
-      "description": "AI 客服机器人，自动回复客户问题",
-      "url": "https://intercom.com", "pricing": "Starter $74/月起",
-      "rating": 4.5, "tags": ["客服", "聊天机器人"],
-      "featured": false, "affiliate": true
-    },
-    {
-      "id": 50, "name": "Tableau AI", "nameZh": "Tableau AI", "category": "business",
-      "description": "AI 数据分析和可视化平台",
-      "url": "https://tableau.com", "pricing": "付费",
-      "rating": 4.6, "tags": ["数据分析", "可视化"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 51, "name": "Fireflies.ai", "nameZh": "Fireflies.ai", "category": "business",
-      "description": "AI 会议助手，自动记录、转录和分析会议内容",
-      "url": "https://fireflies.ai", "pricing": "免费版 + Pro $18/月",
-      "rating": 4.5, "tags": ["会议", "转录", "分析"],
-      "featured": false, "affiliate": false
-    },
-    {
-      "id": 52, "name": "Drift", "nameZh": "Drift", "category": "business",
-      "description": "AI 对话营销和销售平台",
-      "url": "https://drift.com", "pricing": "付费",
-      "rating": 4.4, "tags": ["营销", "销售", "对话"],
-      "featured": false, "affiliate": true
-    }
-  ]
-}
+      "url": "https://xiezu
