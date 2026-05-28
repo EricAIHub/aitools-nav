@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta name="google-site-verification" content="sgjLvhLOPU09f1JAdQ248JH9i3XtpUjsSf-qJpWOQSQ" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AiTool.so - 发现最好的 AI 工具</title>
-<meta name="description" content="发现最好用的人工智能工具。精选 AI 对话、绘画、视频、编程、写作等 10 大分类工具导航。">
-<meta name="keywords" content="AI工具,人工智能,ChatGPT,Midjourney,AI导航,工具推荐">
+<title>AiTool.so - 鍙戠幇鏈€濂界殑 AI 宸ュ叿</title>
+<meta name="description" content="鍙戠幇鏈€濂界敤鐨勪汉宸ユ櫤鑳藉伐鍏枫€傜簿閫?AI 瀵硅瘽銆佺粯鐢汇€佽棰戙€佺紪绋嬨€佸啓浣滅瓑 10 澶у垎绫诲伐鍏峰鑸€?>
+<meta name="keywords" content="AI宸ュ叿,浜哄伐鏅鸿兘,ChatGPT,Midjourney,AI瀵艰埅,宸ュ叿鎺ㄨ崘">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#129302;</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -83,64 +83,64 @@ body.light .sb input,body.light .cc,body.light .tc{background:#fff;border-color:
 <body>
 <header>
 <div class="hi">
-<a href="/" class="logo">AiTool.so <span>AI 工具导航</span></a>
+<a href="/" class="logo">AiTool.so <span>AI 宸ュ叿瀵艰埅</span></a>
 <nav>
-<a href="#categories">分类</a>
-<a href="#tools">工具</a>
-<a href="#submit">提交</a>
-<a href="#about">关于</a>
+<a href="#categories">鍒嗙被</a>
+<a href="#tools">宸ュ叿</a>
+<a href="#submit">鎻愪氦</a>
+<a href="#about">鍏充簬</a>
 <button class="ttg" id="themeToggle" onclick="toggleTheme()">&#127769;</button>
 </nav>
 </div>
 </header>
 
 <section class="hero">
-<h1>发现最好的 AI 工具</h1>
-<p>精选 AI 对话、绘画、视频、编程、写作等 10 大分类工具导航，帮你找到最适合的 AI 利器</p>
+<h1>鍙戠幇鏈€濂界殑 AI 宸ュ叿</h1>
+<p>绮鹃€?AI 瀵硅瘽銆佺粯鐢汇€佽棰戙€佺紪绋嬨€佸啓浣滅瓑 10 澶у垎绫诲伐鍏峰鑸紝甯綘鎵惧埌鏈€閫傚悎鐨?AI 鍒╁櫒</p>
 <div class="sb">
-<input type="text" id="searchInput" placeholder="搜索 AI 工具...">
+<input type="text" id="searchInput" placeholder="鎼滅储 AI 宸ュ叿...">
 </div>
 <div class="stats">
-<div class="stat"><div class="sn" id="toolCount">0</div><div class="sl">AI 工具</div></div>
-<div class="stat"><div class="sn">10</div><div class="sl">分类</div></div>
-<div class="stat"><div class="sn">每日</div><div class="sl">持续更新</div></div>
+<div class="stat"><div class="sn" id="toolCount">0</div><div class="sl">AI 宸ュ叿</div></div>
+<div class="stat"><div class="sn">10</div><div class="sl">鍒嗙被</div></div>
+<div class="stat"><div class="sn">姣忔棩</div><div class="sl">鎸佺画鏇存柊</div></div>
 </div>
 </section>
 
 <section class="sec" id="categories">
-<div class="st">&#128194; 工具分类</div>
+<div class="st">&#128194; 宸ュ叿鍒嗙被</div>
 <div class="cg" id="categoryGrid"></div>
 </section>
 
 <section class="sec" id="tools">
-<div class="st">&#128293; 热门工具</div>
+<div class="st">&#128293; 鐑棬宸ュ叿</div>
 <div class="fbar" id="filterBar">
-<button class="fbtn active" data-filter="all">全部</button>
-<button class="fbtn" data-filter="featured">&#11088; 精选</button>
-<button class="fbtn" data-filter="free">&#127873; 免费</button>
-<button class="fbtn" data-filter="popular">&#128293; 最热</button>
+<button class="fbtn active" data-filter="all">鍏ㄩ儴</button>
+<button class="fbtn" data-filter="featured">&#11088; 绮鹃€?/button>
+<button class="fbtn" data-filter="free">&#127873; 鍏嶈垂</button>
+<button class="fbtn" data-filter="popular">&#128293; 鏈€鐑?/button>
 </div>
 <div class="tg" id="toolGrid"></div>
 <div class="nr" id="noResults" style="display:none">
 <div style="font-size:48px;margin-bottom:16px">&#128269;</div>
-<p>没有找到匹配的工具，试试其他关键词？</p>
+<p>娌℃湁鎵惧埌鍖归厤鐨勫伐鍏凤紝璇曡瘯鍏朵粬鍏抽敭璇嶏紵</p>
 </div>
 </section>
 
 <section class="ss" id="submit">
-<h2>&#128640; 提交你的 AI 工具</h2>
-<p>发现了好用的 AI 工具？提交给我们，审核通过后免费收录</p>
+<h2>&#128640; 鎻愪氦浣犵殑 AI 宸ュ叿</h2>
+<p>鍙戠幇浜嗗ソ鐢ㄧ殑 AI 宸ュ叿锛熸彁浜ょ粰鎴戜滑锛屽鏍搁€氳繃鍚庡厤璐规敹褰?/p>
 <div class="sf">
-<input type="email" id="submitEmail" placeholder="你的邮箱">
-<input type="url" id="submitUrl" placeholder="工具网址 (https://...)">
-<button onclick="submitTool()">提交工具</button>
+<input type="email" id="submitEmail" placeholder="浣犵殑閭">
+<input type="url" id="submitUrl" placeholder="宸ュ叿缃戝潃 (https://...)">
+<button onclick="submitTool()">鎻愪氦宸ュ叿</button>
 </div>
 </section>
 
 <footer id="about">
-<p style="margin-bottom:12px"><a href="/">AiTool.so</a> &#183; 发现最好的 AI 工具</p>
-<p>&#169; 2026 AiTool.so &#183; 持续收录最优质的 AI 工具</p>
-<p style="margin-top:12px;font-size:12px">联系我们：hello@aitool.so &#183; <a href="https://twitter.com/aitoolso" target="_blank">Twitter</a></p>
+<p style="margin-bottom:12px"><a href="/">AiTool.so</a> &#183; 鍙戠幇鏈€濂界殑 AI 宸ュ叿</p>
+<p>&#169; 2026 AiTool.so &#183; 鎸佺画鏀跺綍鏈€浼樿川鐨?AI 宸ュ叿</p>
+<p style="margin-top:12px;font-size:12px">鑱旂郴鎴戜滑锛歨ello@aitool.so &#183; <a href="https://twitter.com/aitoolso" target="_blank">Twitter</a></p>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -164,7 +164,7 @@ var c=toolsData.filter(function(t){return t.category===cat.id}).length;
 return '<a class="cc'+(currentCategory===cat.id?' active':'')+'" onclick="filterByCategory(\''+cat.id+'\')" href="#tools">'+
 '<div class="ci">'+cat.icon+'</div>'+
 '<div class="cn">'+cat.name+'</div>'+
-'<div class="ct">'+c+' 个工具</div></a>';
+'<div class="ct">'+c+' 涓伐鍏?/div></a>';
 }).join('');
 }
 
@@ -178,7 +178,7 @@ return t.name.toLowerCase().indexOf(q)>=0||t.nameZh.indexOf(q)>=0||
 t.description.indexOf(q)>=0||t.tags.some(function(tag){return tag.indexOf(q)>=0});
 });
 if(currentFilter==='featured')f=f.filter(function(t){return t.featured});
-else if(currentFilter==='free')f=f.filter(function(t){return t.pricing.indexOf('免费')>=0||t.pricing.indexOf('开源')>=0});
+else if(currentFilter==='free')f=f.filter(function(t){return t.pricing.indexOf('鍏嶈垂')>=0||t.pricing.indexOf('寮€婧?)>=0});
 else if(currentFilter==='popular')f=f.sort(function(a,b){return b.rating-a.rating});
 if(f.length===0){g.innerHTML='';nr.style.display='block';return}
 nr.style.display='none';
@@ -186,7 +186,7 @@ g.innerHTML=f.map(function(tool,i){
 var cat=categoriesData.find(function(c){return c.id===tool.category});
 return '<a href="tool.html?id='+tool.id+'" class="tc" style="animation-delay:'+i*0.05+'s">'+
 '<div class="th"><div class="ticon">'+(cat?cat.icon:'&#129302;')+'</div><div>'+
-'<div class="tn">'+tool.nameZh+(tool.featured?'<span class="fb">精选</span>':'')+'</div>'+
+'<div class="tn">'+tool.nameZh+(tool.featured?'<span class="fb">绮鹃€?/span>':'')+'</div>'+
 '<div class="tp">'+tool.pricing+'</div></div></div>'+
 '<div class="tdesc">'+tool.description+'</div>'+
 '<div class="tf"><div class="ttags">'+tool.tags.slice(0,3).map(function(t){return '<span class="tt">'+t+'</span>'}).join('')+
@@ -198,7 +198,7 @@ function filterByCategory(id){
 currentCategory=currentCategory===id?'all':id;
 renderCategories();renderTools();
 var title=document.querySelector('#tools .st');
-if(currentCategory==='all')title.innerHTML='&#128293; 热门工具';
+if(currentCategory==='all')title.innerHTML='&#128293; 鐑棬宸ュ叿';
 else{var cat=categoriesData.find(function(c){return c.id===currentCategory});
 title.innerHTML=cat.icon+' '+cat.name;}
 }
@@ -223,9 +223,9 @@ btn.classList.add('active');currentFilter=btn.dataset.filter;renderTools();
 function submitTool(){
 var email=document.getElementById('submitEmail').value.trim();
 var url=document.getElementById('submitUrl').value.trim();
-if(!email||!url){showToast('请填写邮箱和工具网址');return}
-if(url.indexOf('http')!==0){showToast('请输入有效的网址');return}
-showToast('提交成功！审核通过后会收录');
+if(!email||!url){showToast('璇峰～鍐欓偖绠卞拰宸ュ叿缃戝潃');return}
+if(url.indexOf('http')!==0){showToast('璇疯緭鍏ユ湁鏁堢殑缃戝潃');return}
+showToast('鎻愪氦鎴愬姛锛佸鏍搁€氳繃鍚庝細鏀跺綍');
 document.getElementById('submitEmail').value='';
 document.getElementById('submitUrl').value='';
 }
@@ -255,5 +255,22 @@ if(window.scrollY>400)b.classList.add('vis');else b.classList.remove('vis');
 
 init();
 </script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:var(--cb);border-top:1px solid var(--bd);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;z-index:1000;transform:translateY(100%);transition:transform .3s">
+<div style="flex:1;margin-right:16px">
+<p style="color:var(--t);font-size:14px;margin:0">本网站使用 Cookie 和类似技术来改善用户体验、分析流量并展示相关广告。继续使用本网站即表示你同意我们的 <a href="privacy.html" style="color:var(--p)">隐私政策</a>。</p>
+</div>
+<div style="display:flex;gap:8px">
+<button onclick="acceptCookies()" style="background:var(--p);color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:14px">接受</button>
+<button onclick="dismissCookies()" style="background:transparent;color:var(--td);border:1px solid var(--bd);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:14px">拒绝</button>
+</div>
+</div>
+<script>
+function acceptCookies(){localStorage.setItem('cookiesAccepted','true');document.getElementById('cookieBanner').style.transform='translateY(100%)';}
+function dismissCookies(){localStorage.setItem('cookiesAccepted','false');document.getElementById('cookieBanner').style.transform='translateY(100%)';}
+if(!localStorage.getItem('cookiesAccepted')){setTimeout(function(){document.getElementById('cookieBanner').style.transform='translateY(0)';},1000);}
+</script>
 </body>
 </html>
+
